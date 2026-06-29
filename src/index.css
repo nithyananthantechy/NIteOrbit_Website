@@ -1,0 +1,276 @@
+@import "tailwindcss";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+
+@theme {
+  /* ── NEW DEEP SPACE PALETTE ── */
+  --color-background:  #02080F;
+  --color-panel:       #050E1C;
+  --color-border-line: #0B1F3A;
+  --color-accent:      #4F8FFF;   /* electric blue  */
+  --color-data:        #38C5E8;   /* cyan — telemetry data values */
+  --color-accent-dim:  #2B5FC4;   /* darker blue for depth */
+  --color-text-primary:#C4D4E8;   /* starlight white  */
+  --color-text-muted:  #445A73;   /* steel-blue muted */
+
+  --font-mono:    "JetBrains Mono", "Courier New", monospace;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+}
+
+/* ══════════════════════════════
+   BASE
+══════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #02080F;
+  color: #C4D4E8;
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ambient nebula glow in the page background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 20%,  rgba(30,60,140,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 70%,  rgba(79,143,255,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,  rgba(56,197,232,0.04) 0%, transparent 60%);
+}
+
+/* All content sits above the bg */
+#root { position: relative; z-index: 1; }
+
+/* ══════════════════════════════
+   SCROLLBAR
+══════════════════════════════ */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: #02080F; }
+::-webkit-scrollbar-thumb { background: #4F8FFF; border-radius: 0; }
+
+/* ══════════════════════════════
+   SCANLINE OVERLAY
+══════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+  );
+}
+
+/* ══════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════ */
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-heading);
+  color: #C4D4E8;
+}
+.font-mono    { font-family: var(--font-mono) !important; }
+.font-heading { font-family: var(--font-heading) !important; }
+
+/* ══════════════════════════════
+   ANIMATIONS
+══════════════════════════════ */
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0; }
+}
+.cursor-blink { animation: blink 1s steps(1) infinite; }
+
+@keyframes pulse-dot {
+  0%,100% { transform:scale(1); opacity:1; }
+  50%      { transform:scale(1.35); opacity:0.75; }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+@keyframes rec-blink {
+  0%,100% { opacity:1; } 50% { opacity:0.15; }
+}
+.rec-blink { animation: rec-blink 1.5s ease-in-out infinite; }
+
+/* Orbital ring spin on logo */
+@keyframes orbit-spin {
+  from { transform: rotate(-22deg); }
+  to   { transform: rotate(338deg); }
+}
+
+/* Star twinkle */
+@keyframes twinkle {
+  0%,100% { opacity:0.6; } 50% { opacity:0.15; }
+}
+
+/* ══════════════════════════════
+   GRID / STAR BACKGROUND
+══════════════════════════════ */
+.grid-bg {
+  background-image:
+    repeating-linear-gradient(0deg,  rgba(79,143,255,0.025) 0px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(90deg, rgba(79,143,255,0.025) 0px, transparent 1px, transparent 60px);
+}
+
+/* ══════════════════════════════
+   HERO CORNER BRACKETS
+══════════════════════════════ */
+.corner-bracket-tl::before {
+  content: '';
+  position: absolute; top:24px; left:24px;
+  width:24px; height:24px;
+  border-top:  2px solid #4F8FFF;
+  border-left: 2px solid #4F8FFF;
+  pointer-events: none;
+}
+.corner-bracket-bl::after {
+  content: '';
+  position: absolute; bottom:24px; left:24px;
+  width:24px; height:24px;
+  border-bottom: 2px solid #4F8FFF;
+  border-left:   2px solid #4F8FFF;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════
+   PANEL
+══════════════════════════════ */
+.telemetry-panel {
+  background: #050E1C;
+  border: 1px solid #0B1F3A;
+  border-radius: 0;
+}
+
+/* ══════════════════════════════
+   INPUTS
+══════════════════════════════ */
+.terminal-input {
+  background: #050E1C;
+  border: 1px solid #0B1F3A;
+  border-radius: 0;
+  color: #C4D4E8;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  padding: 10px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.terminal-input:focus {
+  border-color: #4F8FFF;
+  box-shadow: 0 0 0 2px rgba(79,143,255,0.12);
+}
+.terminal-input::placeholder { color: #1E3050; }
+
+/* ══════════════════════════════
+   BUTTONS
+══════════════════════════════ */
+.btn-accent {
+  background: #4F8FFF;
+  color: #02080F;
+  border: none; border-radius: 0;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-accent:hover {
+  background: #3B7AF0;
+  box-shadow: 0 0 16px rgba(79,143,255,0.35);
+}
+
+.btn-outline-accent {
+  background: transparent;
+  color: #4F8FFF;
+  border: 1px solid #4F8FFF; border-radius: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-outline-accent:hover {
+  background: #4F8FFF;
+  color: #02080F;
+  box-shadow: 0 0 16px rgba(79,143,255,0.3);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #C4D4E8;
+  border: 1px solid #C4D4E8; border-radius: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-outline-white:hover {
+  background: #C4D4E8;
+  color: #02080F;
+}
+
+/* ══════════════════════════════
+   SERVICE ROW HOVER
+══════════════════════════════ */
+.service-row {
+  border-left: 4px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.service-row:hover {
+  border-left-color: #4F8FFF;
+  background: rgba(5,14,28,0.8);
+}
+
+/* ══════════════════════════════
+   NAV LINK
+══════════════════════════════ */
+.nav-link {
+  position: relative;
+  color: #445A73;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: #4F8FFF;
+  transition: width 0.2s ease;
+}
+.nav-link:hover, .nav-link.active { color: #4F8FFF; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ══════════════════════════════
+   ACCENT LINE
+══════════════════════════════ */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, #4F8FFF, #38C5E8 50%, transparent);
+}
+
+/* ══════════════════════════════
+   STAT UNDERLINE
+══════════════════════════════ */
+.stat-underline {
+  display: inline-block;
+  border-bottom: 2px solid #4F8FFF;
+  padding-bottom: 4px;
+}
