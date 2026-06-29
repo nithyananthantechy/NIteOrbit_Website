@@ -1,24 +1,53 @@
 import './index.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Perigee from './components/Perigee';
-import WhyNow from './components/WhyNow';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Navbar    from './components/Navbar';
+import Hero      from './components/Hero';
+import TrustBar  from './components/TrustBar';
+import Problem   from './components/Problem';
+import Services  from './components/Services';
+import HowItWorks from './components/HowItWorks';
+import Perigee   from './components/Perigee';
+import WhyNow    from './components/WhyNow';
+import FAQ       from './components/FAQ';
+import FinalCTA  from './components/FinalCTA';
+import Contact   from './components/Contact';
+import Footer    from './components/Footer';
 
 export default function App() {
   return (
-    <div style={{ minHeight: '100vh', background: '#05050A' }}>
-      <Navbar />
+    <div style={{ minHeight:'100vh', background:'#02080F' }}>
+      <Navbar/>
       <main>
-        <Hero />
-        <Services />
-        <Perigee />
-        <WhyNow />
-        <Contact />
+        {/* 1. Hook */}
+        <Hero/>
+
+        {/* 2. Credibility signal */}
+        <TrustBar/>
+
+        {/* 3. Pain points */}
+        <Problem/>
+
+        {/* 4. Solution */}
+        <Services/>
+
+        {/* 5. Process / trust builder */}
+        <HowItWorks/>
+
+        {/* 6. Product */}
+        <Perigee/>
+
+        {/* 7. Market evidence */}
+        <WhyNow/>
+
+        {/* 8. Objection handling */}
+        <FAQ/>
+
+        {/* 9. Final conversion push */}
+        <FinalCTA/>
+
+        {/* 10. Contact */}
+        <Contact/>
       </main>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
