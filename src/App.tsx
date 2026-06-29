@@ -14,7 +14,7 @@ import Footer    from './components/Footer';
 
 export default function App() {
   return (
-    <div style={{ minHeight:'100vh', background:'#02080F' }}>
+    <div className="min-h-screen bg-[#02080F]">
       <Navbar/>
       <main>
         {/* 1. Hook */}

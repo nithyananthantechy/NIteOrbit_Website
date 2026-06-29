@@ -1,0 +1,7 @@
+{
+  "extends": ["development"],
+  "hints": {
+    "inline-style": "off",
+    "meta-theme-color": "off"
+  }
+}
