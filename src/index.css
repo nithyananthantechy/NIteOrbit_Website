@@ -274,3 +274,31 @@ h1,h2,h3,h4,h5,h6 {
   border-bottom: 2px solid #4F8FFF;
   padding-bottom: 4px;
 }
+
+/* ══════════════════════════════
+   MOBILE RESPONSIVENESS OVERRIDES
+══════════════════════════════ */
+@media (max-width: 768px) {
+  section {
+    padding: 64px 20px !important;
+  }
+  
+  /* Make sure headings scale down nicely */
+  h1 { font-size: clamp(2rem, 8vw, 3rem) !important; }
+  h2 { font-size: clamp(1.5rem, 6vw, 2.25rem) !important; }
+  
+  /* Prevent horizontal overflow on small devices */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Force stack on specific flex layouts if they overflow */
+  .mobile-col {
+    flex-direction: column !important;
+  }
+
+  /* Reduce gap on some flex layouts */
+  .mobile-gap-sm {
+    gap: 16px !important;
+  }
+}

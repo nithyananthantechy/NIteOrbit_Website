@@ -17,17 +17,21 @@ export function NiteOrbitLogo({ height = 44 }: { height?: number }) {
     >
       {/* ── Orbital icon group, centered at (30, 28) ── */}
       <g transform="translate(30,28)">
-        {/* Outer ring — tilted ellipse */}
-        <ellipse
-          cx="0" cy="0" rx="22" ry="11.5"
-          fill="none"
-          stroke="#4F8FFF"
-          strokeWidth="1.7"
-          transform="rotate(-22)"
-        />
+        
+        {/* Ring and satellite dot grouped for correct rotation math */}
+        <g transform="rotate(-22)">
+          <ellipse
+            cx="0" cy="0" rx="22" ry="11.5"
+            fill="none"
+            stroke="#4F8FFF"
+            strokeWidth="1.7"
+          />
+          {/* Satellite dot placed exactly ON the ellipse path */}
+          <circle cx="15.55" cy="8.13" r="3.5" fill="#FFB830"/>
+          <circle cx="15.55" cy="8.13" r="2" fill="#FFD060" fillOpacity="0.5"/>
+        </g>
 
-        {/* Tick marks extending outward from upper arc
-            Each tick: a short line starting at ~ring surface and going outward */}
+        {/* Tick marks extending outward from upper arc */}
         {/* 11 o'clock */}
         <line x1="-16" y1="-13" x2="-20" y2="-17" stroke="#4F8FFF" strokeWidth="1.3" strokeLinecap="round"/>
         {/* 12 o'clock ish */}
@@ -40,11 +44,6 @@ export function NiteOrbitLogo({ height = 44 }: { height?: number }) {
         <line x1="14"  y1="-9"  x2="18"  y2="-13" stroke="#4F8FFF" strokeWidth="1.3" strokeLinecap="round"/>
         {/* 10 o'clock (shorter) */}
         <line x1="-21" y1="-6"  x2="-26" y2="-8"  stroke="#4F8FFF" strokeWidth="1.1" strokeLinecap="round" strokeOpacity="0.7"/>
-
-        {/* Satellite / planet dot (gold — matching Logo 3) */}
-        <circle cx="18" cy="9" r="3.5" fill="#FFB830"/>
-        {/* Inner glow on dot */}
-        <circle cx="18" cy="9" r="2" fill="#FFD060" fillOpacity="0.5"/>
       </g>
 
       {/* Vertical divider */}
