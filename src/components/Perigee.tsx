@@ -2,11 +2,9 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const ACCENT  = '#4F8FFF';
-const DATA    = '#38C5E8';
 const PRIMARY = '#C4D4E8';
 const MUTED   = '#445A73';
 const BORDER  = '#0B1F3A';
-const PANEL   = '#050E1C';
 
 function makePath(w:number, h:number, seed:number, amp:number) {
   return Array.from({ length:51 }, (_,i) => {

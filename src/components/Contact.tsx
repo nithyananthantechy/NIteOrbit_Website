@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Clock } from 'lucide-react';
 

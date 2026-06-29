@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import TelemetryPanel from './TelemetryPanel';
 
 const ACCENT  = '#4F8FFF';
@@ -21,7 +22,7 @@ const CHIPS = [
 ];
 
 const container = { hidden:{}, visible:{ transition:{ staggerChildren:0.14 } } };
-const line = { hidden:{ opacity:0,y:32 }, visible:{ opacity:1,y:0, transition:{ duration:0.6, ease:'easeOut' } } };
+const line: Variants = { hidden:{ opacity:0,y:32 }, visible:{ opacity:1,y:0, transition:{ duration:0.6, ease:'easeOut' } } };
 
 export default function Hero() {
   const [tagIdx, setTagIdx] = useState(0);

@@ -5,7 +5,6 @@ const ACCENT  = '#4F8FFF';
 const DATA    = '#38C5E8';
 const BORDER  = '#0B1F3A';
 const MUTED   = '#445A73';
-const PANEL   = '#050E1C';
 
 type Row = { label:string; value:string; base:number; delta:number; unit:string; dec:number };
 

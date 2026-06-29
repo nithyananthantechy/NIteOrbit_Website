@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 const ACCENT  = '#4F8FFF';
 const DATA    = '#38C5E8';
@@ -30,7 +31,7 @@ const SERVICES = [
   },
 ];
 
-const rowV = {
+const rowV: Variants = {
   hidden:{ opacity:0, y:24 },
   visible:(i:number) => ({ opacity:1, y:0, transition:{ duration:0.5, delay:i*0.12, ease:'easeOut' } }),
 };
